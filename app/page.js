@@ -1,5 +1,5 @@
 import ListTodos from "@/components/ListTodos";
-import Form from "@/components/form";
+import Form from "@/components/Form";
 
 export default function Home() {
   return (
