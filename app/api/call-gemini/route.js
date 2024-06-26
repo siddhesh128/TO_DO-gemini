@@ -9,7 +9,7 @@ export async function POST(req) {
     if (!query) {
       throw new Error("Query parameter is missing in the request body");
     }
-    const customQuery = `this is my todo task give me some suggestions to complete it, ${query}`;
+    const customQuery = `this is my todo task give me some suggestions to complete it, suggest time management techniques,recommend resources or tools, prioritization tips, ${query}`;
 
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
     const result = await model.generateContent(customQuery);
