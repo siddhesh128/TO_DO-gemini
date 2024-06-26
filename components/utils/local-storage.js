@@ -1,7 +1,7 @@
 import { uuid } from "uuidv4";
 
 export function addTodo(todoText, suggestions = []) {
-  const todos = JSON.parse(localStorage.getItem("todos"));
+  const todos = JSON.parse(localStorage.getItem("todos")) || [];
   const newTodo = {
     id: uuid(),
     todo: todoText,
@@ -20,10 +20,12 @@ export function getTodos() {
 
 export const markisFinished = (todo) => {
   const todos = getTodos();
-  const index = todos.findIndex((todo) => todo.id === todo.id);
+  const index = todos.findIndex((item) => item.id === todo.id);
   const updatedTodo = { ...todo, isFinished: !todo.isFinished };
   if (index !== -1) {
     todos[index] = updatedTodo;
+    console.log(index);
+    console.log({ index, todo, todos, updatedTodo });
     localStorage.setItem("todos", JSON.stringify(todos));
   } else {
     console.error("Todo not found");
